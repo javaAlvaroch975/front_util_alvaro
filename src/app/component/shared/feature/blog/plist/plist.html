@@ -29,6 +29,7 @@
             <th scope="col">Etiquetas</th>
             <th scope="col">Creación</th>
             <th scope="col">Actualización</th>
+            <th scope="col">Operaciones</th>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +40,9 @@
             <td>{{ oBlog.etiquetas }}</td>
             <td>{{ oBlog.fechaCreacion }}</td>
             <td>{{ oBlog.fechaModificacion }}</td>
+            <td>
+                <a [routerLink]="['/blog/view', oBlog.id]" class="btn btn-info btn-sm">Ver</a>
+            </td>
         </tr>
         }
     </tbody>

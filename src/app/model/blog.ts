@@ -1,5 +1,5 @@
 
-export interface Blog {
+export interface IBlog {
   id: number
   titulo: string
   contenido: string

@@ -19,27 +19,27 @@ export class TablonService {
     if (direction === '') {
       direction = 'asc';
     }
-    return this.oHttp.get<IPage<ITablon>>(serverURL + `/Tablon?page=${page}&size=${rpp}&sort=${order},${direction}`);
+    return this.oHttp.get<IPage<ITablon>>(serverURL + `/recurso?page=${page}&size=${rpp}&sort=${order},${direction}`);
   }
 
   get(id: number): Observable<ITablon> {
-    return this.oHttp.get<ITablon>(serverURL + '/Tablon/' + id);
+    return this.oHttp.get<ITablon>(serverURL + '/recurso/' + id);
   }
 
   create(Tablon: Partial<ITablon>): Observable<number> {
-    return this.oHttp.post<number>(serverURL + '/Tablon', Tablon);
+    return this.oHttp.post<number>(serverURL + '/recurso', Tablon);
   }
 
   update(Tablon: Partial<ITablon>): Observable<number> {
-    return this.oHttp.put<number>(serverURL + '/Tablon', Tablon);
+    return this.oHttp.put<number>(serverURL + '/recurso', Tablon);
   }
 
   delete(id: number): Observable<number> {
-    return this.oHttp.delete<number>(serverURL + '/Tablon/' + id);
+    return this.oHttp.delete<number>(serverURL + '/recurso/' + id);
   }
 
   rellenaTablon(numPosts: number): Observable<number> {
-    return this.oHttp.get<number>(serverURL + '/Tablon/rellena/' + numPosts);
+    return this.oHttp.get<number>(serverURL + '/recurso/rellena/' + numPosts);
   }
 
 }

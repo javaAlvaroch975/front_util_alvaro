@@ -29,17 +29,16 @@ export class RoutedAdminNew implements OnInit {
       titulo: ['', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(1024)
+        Validators.maxLength(200)
       ]],
       contenido: ['', [
         Validators.required,
-        Validators.minLength(3),
+        Validators.minLength(10),
       ]],
       etiquetas: ['', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(1024)
+        Validators.maxLength(100)
       ]],
+      publico: [false],
     });
   }
 
@@ -54,6 +53,7 @@ export class RoutedAdminNew implements OnInit {
       titulo: this.tablonForm.value.titulo,
       contenido: this.tablonForm.value.contenido,
       etiquetas: this.tablonForm.value.etiquetas,
+      publico: this.tablonForm.value.publico,
     };
 
     this.tablonService.create(payload).subscribe({
@@ -63,8 +63,9 @@ export class RoutedAdminNew implements OnInit {
       },
       error: (err: HttpErrorResponse) => {
         this.submitting = false;
-        this.error = 'Error al crear el post';
-        console.error(err);
+        this.error = `Error al crear el post: ${err.message}`;
+        console.error('Error completo:', err);
+        console.error('Payload enviado:', payload);
       },
     });
   }
@@ -79,5 +80,9 @@ export class RoutedAdminNew implements OnInit {
 
   get etiquetas() {
     return this.tablonForm.get('etiquetas');
+  }
+
+  get publico() {
+    return this.tablonForm.get('publico');
   }
 }

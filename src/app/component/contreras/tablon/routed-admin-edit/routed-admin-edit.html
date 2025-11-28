@@ -3,8 +3,8 @@
     <div class="col-12 col-lg-8">
       <div class="form-card">
         <header class="form-header mb-4">
-          <h1 class="form-title">Editar Post</h1>
-          <p class="text-muted small">Modifica los campos del post</p>
+          <h1 class="form-title">Editar tablon</h1>
+          <p class="text-muted small">Modifica los campos del tablon</p>
         </header>
 
         @if (loading) {
@@ -38,13 +38,13 @@
             @if (titulo?.invalid && titulo?.touched) {
             <div class="invalid-feedback">
               @if (titulo?.errors?.['required']) {
-                <span>El título es obligatorio.</span>
+                <span>El titulo es obligatorio.</span>
               }
               @if (titulo?.errors?.['minlength']) {
-                <span>El título debe tener al menos 3 caracteres.</span>
+                <span>El titulo tiene que tener al menos 3 caracteres.</span>
               }
               @if (titulo?.errors?.['maxlength']) {
-                <span>El título no puede superar 200 caracteres.</span>
+                <span>El titulo no puede superar 200 caracteres.</span>
               }
             </div>
             }
@@ -68,7 +68,7 @@
                 <span>El contenido es obligatorio.</span>
               }
               @if (contenido?.errors?.['minlength']) {
-                <span>El contenido debe tener al menos 10 caracteres.</span>
+                <span>El contenido tiene que tener al menos 10 caracteres.</span>
               }
             </div>
             }
@@ -94,6 +94,20 @@
             </div>
             }
             <small class="form-text text-muted">Ejemplo: angular, typescript, web</small>
+          </div>
+
+          <!-- Publico -->
+          <div class="mb-4 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="publico"
+              formControlName="publico"
+            />
+            <label class="form-check-label" for="publico">
+              Hacer público
+            </label>
+            <small class="form-text text-muted d-block">Si quieres que tu tablon sea publico, marca esta casilla.</small>
           </div>
 
           <!-- Botones -->

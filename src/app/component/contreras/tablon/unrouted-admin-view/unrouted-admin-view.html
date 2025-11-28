@@ -24,6 +24,16 @@
               <td>{{ oTablon?.etiquetas }}</td>
             </tr>
             <tr>
+              <th scope="col">Público</th>
+              <td>
+                @if (oTablon?.publico) {
+                  <i class="bi bi-check-circle text-success"></i> Sí
+                } @else {
+                  <i class="bi bi-x-circle text-danger"></i> No
+                }
+              </td>
+            </tr>
+            <tr>
               <th scope="col">Creación</th>
               <td>{{ oTablon?.fechaCreacion }}</td>
             </tr>

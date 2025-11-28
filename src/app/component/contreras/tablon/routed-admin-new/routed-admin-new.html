@@ -87,6 +87,20 @@
             <small class="form-text text-muted">Ejemplo: angular, typescript, web</small>
           </div>
 
+          <!-- Público -->
+          <div class="mb-4 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="publico"
+              formControlName="publico"
+            />
+            <label class="form-check-label" for="publico">
+              Hacer público
+            </label>
+            <small class="form-text text-muted d-block">Si está marcado, el post será visible para todos los usuarios</small>
+          </div>
+
           <!-- Botones -->
           <div class="d-flex justify-content-between align-items-center mt-4">
             <a [routerLink]="['/tablon/plist']" class="btn btn-outline-secondary">

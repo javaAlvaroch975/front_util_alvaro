@@ -46,6 +46,7 @@ export class RoutedAdminEdit implements OnInit {
                 Validators.required,
                 Validators.minLength(10)]],
             etiquetas: ['', [Validators.maxLength(100)]],
+            publico: [false],
         });
     }
 
@@ -57,6 +58,7 @@ export class RoutedAdminEdit implements OnInit {
                     titulo: tablon.titulo,
                     contenido: tablon.contenido,
                     etiquetas: tablon.etiquetas,
+                    publico: tablon.publico,
                 });
                 this.loading = false;
             },
@@ -79,7 +81,8 @@ export class RoutedAdminEdit implements OnInit {
             id: this.tablonId!,
             titulo: this.tablonForm.value.titulo,
             contenido: this.tablonForm.value.contenido,
-            etiquetas: this.tablonForm.value.etiquetas
+            etiquetas: this.tablonForm.value.etiquetas,
+            publico: this.tablonForm.value.publico
         };
 
         this.tablonService.update(payload).subscribe({
@@ -105,5 +108,9 @@ export class RoutedAdminEdit implements OnInit {
 
     get etiquetas() {
         return this.tablonForm.get('etiquetas');
+    }
+
+    get publico() {
+        return this.tablonForm.get('publico');
     }
 }

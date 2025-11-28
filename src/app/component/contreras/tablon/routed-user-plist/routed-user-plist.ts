@@ -29,7 +29,16 @@ export class RoutedUserPlist {
   getPage() {
     this.oTablonService.getPage(this.numPage, this.numRpp, 'fechaCreacion', 'desc').subscribe({
       next: (data: IPage<ITablon>) => {
-        this.oPage = data;
+        // Filtrar solo posts públicos
+        const filteredContent = data.content.filter(post => post.publico === true);
+        
+        // Crear nueva página con contenido filtrado
+        this.oPage = {
+          ...data,
+          content: filteredContent,
+          numberOfElements: filteredContent.length
+        };
+        
         // OJO! si estamos en una página que supera el límite entonces nos situamos en la ultima disponible
         if (this.numPage > 0 && this.numPage >= data.totalPages) {
           this.numPage = data.totalPages - 1;

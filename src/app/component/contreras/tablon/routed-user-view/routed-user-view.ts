@@ -9,7 +9,7 @@ import { UnroutedUserView } from "../unrouted-user-view/unrouted-user-view";
   selector: 'app-routed-user-view',
   imports: [UnroutedUserView],
   templateUrl: './routed-user-view.html',
-  styleUrls: ['./routed-user-view.css'],
+  styleUrl: './routed-user-view.css',
 })
 export class RoutedUserView {
   oTablon: ITablon | null = null;
@@ -30,10 +30,14 @@ export class RoutedUserView {
   getTablon(tablonId: number) {
     this.oTablonService.get(tablonId).subscribe({
       next: (data: ITablon) => {
-        this.oTablon = data;
+        if (data.publico) {
+          this.oTablon = data;
+        } else {
+          this.oTablon = null;
+        }
       },
-      error: (error: HttpErrorResponse) => {
-        console.error('Error fetching tablon:', error);
+      error: () => {
+        this.oTablon = null;
       },
     });
   }

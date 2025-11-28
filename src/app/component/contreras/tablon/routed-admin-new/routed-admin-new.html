@@ -24,18 +24,18 @@
               [class.is-valid]="titulo?.valid && titulo?.touched"
               id="titulo"
               formControlName="titulo"
-              placeholder="Introduce el título del post"
+              placeholder="Introduce el titulo del post"
             />
             @if (titulo?.invalid && titulo?.touched) {
             <div class="invalid-feedback">
               @if (titulo?.errors?.['required']) {
-                <span>El título es obligatorio.</span>
+                <span>El titulo es obligatorio.</span>
               }
               @if (titulo?.errors?.['minlength']) {
-                <span>El título debe tener al menos 3 caracteres.</span>
+                <span>El titulo debe tener al menos 3 caracteres.</span>
               }
               @if (titulo?.errors?.['maxlength']) {
-                <span>El título no puede superar 200 caracteres.</span>
+                <span>El titulo no puede superar 200 caracteres.</span>
               }
             </div>
             }

@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IPage } from '../../model/plist';
 import { ITablon } from '../../model/tablon';
 import { TablonService } from '../../service/tablon';
@@ -18,7 +19,10 @@ export class RoutedUserPlist {
   numPage: number = 0;
   numRpp: number = 1;
 
-  constructor(private oTablonService: TablonService) { }
+  constructor(private oTablonService: TablonService, private router: Router) { }
+  volver() {
+    this.router.navigate(['']);
+  }
 
   oBotonera: string[] = [];
 
@@ -29,17 +33,14 @@ export class RoutedUserPlist {
   getPage() {
     this.oTablonService.getPage(this.numPage, this.numRpp, 'fechaCreacion', 'desc').subscribe({
       next: (data: IPage<ITablon>) => {
-        // Filtrar solo posts públicos
         const filteredContent = data.content.filter(post => post.publico === true);
         
-        // Crear nueva página con contenido filtrado
         this.oPage = {
           ...data,
           content: filteredContent,
           numberOfElements: filteredContent.length
         };
         
-        // OJO! si estamos en una página que supera el límite entonces nos situamos en la ultima disponible
         if (this.numPage > 0 && this.numPage >= data.totalPages) {
           this.numPage = data.totalPages - 1;
           this.getPage();

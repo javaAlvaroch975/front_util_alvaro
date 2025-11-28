@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ITablon } from '../../model/tablon';
 import { TablonService } from '../../service/tablon';
 import { ActivatedRoute } from '@angular/router';
@@ -14,8 +15,7 @@ import { UnroutedAdminView } from "../unrouted-admin-view/unrouted-admin-view";
 export class RoutedAdminView {
   oTablon: ITablon | null = null;
 
-  constructor(private oTablonService: TablonService, private route: ActivatedRoute) {
-    // Obtener el ID del tablon desde la ruta
+  constructor(private oTablonService: TablonService, private route: ActivatedRoute, private router: Router) {
     const idParam = this.route.snapshot.paramMap.get('id');
     const tablonId = idParam ? Number(idParam) : NaN;
     if (isNaN(tablonId)) {
@@ -23,6 +23,10 @@ export class RoutedAdminView {
       return;
     }
     this.getTablon(tablonId);
+  }
+
+  volver() {
+    this.router.navigate(['']);
   }
 
   ngOnInit() { }

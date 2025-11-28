@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IPage } from '../../model/plist';
@@ -19,7 +20,10 @@ export class RoutedAdminPlist {
   numPage: number = 0;
   numRpp: number = 5;
 
-  constructor(private oTablonService: TablonService) { }
+  constructor(private oTablonService: TablonService, private router: Router) { }
+  volver() {
+    this.router.navigate(['']);
+  }
 
   oBotonera: string[] = [];
 
@@ -31,7 +35,6 @@ export class RoutedAdminPlist {
     this.oTablonService.getPage(this.numPage, this.numRpp).subscribe({
       next: (data: IPage<ITablon>) => {
         this.oPage = data;
-        // si estamos en una página que supera el límite entonces nos situamos en la ultima disponible
         if (this.numPage > 0 && this.numPage >= data.totalPages) {
           this.numPage = data.totalPages - 1;
           this.getPage();

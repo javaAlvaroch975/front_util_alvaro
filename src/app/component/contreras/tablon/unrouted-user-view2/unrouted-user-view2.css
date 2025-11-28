@@ -1,4 +1,10 @@
-
+/* Fondo morado para cada post */
+.front-view-post {
+	background: #ede3fa;
+	border-radius: 16px;
+	padding: 1.5rem;
+	margin-bottom: 2rem;
+}
 
 
 /* Style for Bootstrap icon <i class="bi ..."> */

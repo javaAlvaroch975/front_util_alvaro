@@ -16,7 +16,7 @@ import { UnroutedUserView2 } from "../unrouted-user-view2/unrouted-user-view2";
 export class RoutedUserPlist {
   oPage: IPage<ITablon> | null = null;
   numPage: number = 0;
-  numRpp: number = 2;
+  numRpp: number = 1;
 
   constructor(private oTablonService: TablonService) { }
 
